@@ -892,7 +892,15 @@ h2, h3, h4 {
   }
 }
 
-
+@supports (-webkit-touch-callout: none) {
+  .gallery-item {
+    width: 85vw !important;
+  }
+  
+  .gallery-list {
+    gap: 16px !important;
+  }
+}
 
 
 @media (max-width: 1024px) {
@@ -1019,7 +1027,7 @@ h2, h3, h4 {
   }
 
   .gallery-item {
-    width: clamp(180px, 35vw, 300px);
+    width: 45vw;
   }
 
 .footer-main {
@@ -1423,3 +1431,5 @@ h2, h3, h4 {
     max-height: 70vh;
   }
 }
+
+
