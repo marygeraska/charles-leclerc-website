@@ -1,0 +1,1413 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url('./fonts/OpenSans-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('./fonts/Oswald-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Плавный скролл
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not(
+  [fill="none"],
+  [fill^="url"]
+)) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not(
+  [stroke="none"],
+  [stroke^="url"]
+)) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --color-red: #dc0000;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-silver:#c0c0c0;
+  --color-dark-red: #ba0000;
+
+  --font-family-base: 'OpenSans', sans-serif;
+  --font-family-accent: 'Oswald', sans-serif;
+
+
+  --transition-duration: 0.2s;
+
+  --header-height: 150px;
+
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.container-wide {
+  padding: 36px 70px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-dark);
+  background-color: #F2F2F2;
+  
+  
+}
+
+a {
+  color: var(--color-light);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-silver);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-family-accent);
+    
+}
+
+h2, h3, h4 {
+  color: var(--color-dark-red);
+}
+
+.header {
+  min-height: 700px;
+  padding-top: 30px;
+  color: var(--color-light);
+  
+  padding-inline: 50px;
+  background: url(./images/headercar1920.webp) center/cover no-repeat var(--color-dark-red);
+
+  display: flex;
+  flex-direction: column; 
+
+}
+
+.header-menu-list {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.header-nav:not(:last-child) {
+  margin-bottom: 95px;
+}
+
+.header-menu-link {
+  display: inline-flex;
+  align-items: start;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.header-title-name {
+  font-size: 100px;
+  line-height: 1;
+
+}
+
+.header-title-name:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.header-title-description {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.27;
+
+}
+
+.header-title-description:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.header-title-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  white-space: nowrap;
+
+  background-color: var(--color-dark);
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.header-title-button:hover {
+  background-color: var(--color-dark-red);
+}
+
+.burger-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.burger {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  display: none;
+  /* border: none;
+  background: transparent; */
+  width: 36px;
+  height: 24px;
+  /* margin: 30px auto; */
+}
+.burger::before,
+.burger::after {
+  content: '';
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background: var(--color-light);
+}
+.burger::before {
+  top: 0;
+  box-shadow: 0 11px 0 var(--color-light);
+  transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+}
+.burger::after {
+  bottom: 0;
+  transition: bottom .3s .15s, transform .3s;
+}
+.burger-checkbox:checked + .burger::before {
+  top: 10px;
+  transform: rotate(45deg);
+  box-shadow: 0 6px 0 rgba(0,0,0,0);
+  transition: box-shadow .15s, top .3s, transform .3s .15s;
+}
+.burger-checkbox:checked + .burger::after {
+  bottom: 10px;
+  transform: rotate(-45deg);
+  transition: bottom .3s, transform .3s .15s;
+}
+
+
+.biography {
+  margin-top: 20px;
+  padding: 60px 0; 
+}
+
+.biography-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.biography-title {
+  font-size: 36px;
+  text-align: left;
+
+}
+
+.biography-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+
+.biography-paragraph {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.biography-image {
+  width: 100%; 
+  border-radius: 16px;
+  object-fit: cover; 
+  
+}
+
+
+.biography-description {
+  line-height: 1.6;
+  font-size: 20px;
+  text-align: justify;
+  
+}
+
+.biography-text p:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+
+.results-body-list {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-around;
+
+  border-bottom: 3px solid var(--color-red);
+  padding-bottom: 20px;
+}
+
+
+.results-body-item {
+  text-align: center;
+}
+
+.results-body-title {
+  color: var(--color-dark);
+  font-size: 40px;
+}
+
+.results-body-description {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+
+.career-body-title {
+  font-size: 36px;
+}
+
+.career-body-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.career-description-title {
+  color: var(--color-dark);
+  font-size: 26px;
+}
+
+.career-description {
+  line-height: 1.5;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.career-description p {
+  margin-bottom: 20px;
+}
+
+.career-description-title:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.career-paragraph {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.career-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.racingcars {
+  max-width: 1920px;
+  margin-inline: auto;
+  padding: 40px 20px;
+  
+}
+
+.racingcars-title {
+  font-size: 36px;
+  text-align: center;
+
+}
+
+.racingcars-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.racingcars-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+  gap: 30px;
+  justify-content: center;
+}
+
+
+.racingcars-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+.racingcars-item a {
+  cursor: zoom-in;
+}
+
+.racingcars-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.racingcars-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.racingcars-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.racingcars-item-title:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.racingcar-description {
+  font-size: 16px;
+  color: #555;
+}
+
+.cars {
+  max-width: 1920px;
+  margin-inline: auto;
+  padding: 40px 20px;
+  
+}
+
+.cars-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+  gap: 30px;
+  justify-content: center;
+
+}
+
+.cars-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.cars-item a {
+  cursor: zoom-in;
+}
+
+.cars-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  
+}
+
+.cars-title {
+  font-size: 36px;
+  text-align: center;
+}
+
+.cars-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.cars-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+
+.cars-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.cars-item-title:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.glightbox-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+.glightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: min(900px, 90vw);
+  width: 90%;
+  margin: 0 auto;
+
+  /* max-height: 90vh;
+  overflow-y: auto; */
+
+}
+
+.glightbox-content-image {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.glightbox-content-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-top: 10px;
+}
+
+.gallery {
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.gallery-list {
+  display: flex;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+
+}
+
+.gallery-list::-webkit-scrollbar {
+  display: none; 
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  cursor: zoom-in;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-title {
+  font-size: 36px;
+  text-align: center;
+}
+
+.gallery-title:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.footer {
+  margin-top: 50px;
+  font-family: inherit;
+}
+
+.footer-main {
+  background: url(./images/footer1920.webp) center/cover no-repeat var(--color-red);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+  position: relative;
+
+}
+
+.footer-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.footer-title {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 60px);
+  color: var(--color-light);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-title:not(:last-child) {
+  margin-bottom: 80px;
+}
+
+.footer-soc1als-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 50px;
+}
+
+.footer-soc1als-link {
+  display: flex;
+  width: clamp(40px, 5vw, 70px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-socials-link:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+
+.footer-extra {
+  padding: 15px 20px;
+  background-color: var(--color-dark-red);
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.5;
+  color: var(--color-light) ;
+}
+
+
+.footer-copyright a:hover {
+  color: var(--color-red);
+}
+
+@media (min-width: 1800px) {
+  .glightbox-content-image {
+    max-height: 20vh;
+  }
+}
+
+@media (min-width: 2200px) {
+
+  .glightbox-content-image {
+    max-height: 30vh;
+  }
+}
+
+@media (min-width: 3000px) {
+  .glightbox-content-image {
+    max-height: 20vh;
+  }
+}
+
+@media (min-width: 4000px) {
+  .glightbox-content-image {
+    max-height: 20vh;
+  }
+}
+
+
+@media (min-width: 5000px) {
+  .glightbox-content-image {
+    max-height: 15vh;
+  }
+}
+
+
+
+
+@media (max-width: 1024px) {
+
+.header-menu-link {
+  font-size: 14px;
+}
+
+.header-title-name {
+  font-size: 80px;
+}
+
+.header-title-description {
+  font-size: 24px;
+}
+
+.header-menu-list {
+  column-gap: 30px;
+}
+
+.header {
+    background: url(./images/headercar1280.webp) center/cover no-repeat (--color-dark-red);
+}
+
+.biography-container {
+  padding: 36px 70px;
+}
+
+.biography-title {
+  font-size: 32px;
+  text-align: center;
+}
+
+
+.biography-paragraph {
+  grid-template-columns: 1fr;
+}
+
+.biography-image {
+  max-width: 50%;
+  justify-self: center;
+  display: block; 
+}
+
+.biography-image:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+.biography-description {
+  font-size: 18px;
+}
+
+.results-body-list {
+  gap: 20px;
+}
+
+.results-body-title {
+  font-size: 32px;
+}
+
+.results-body-description {
+  font-size: 18px;
+}
+
+.career-body-title {
+  font-size: 32px;
+}
+
+.career-description {
+  font-size: 18px;
+}
+
+.career-paragraph {
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.career-img {
+  max-width: 70%;
+  justify-self: center;
+}
+
+.racingcars-list {
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+.racingcars-image {
+    height: 180px;
+  }
+
+
+.racingcars-title {
+  font-size: 32px;
+}
+
+
+.cars-list {
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cars-title {
+  font-size: 32px;
+}
+
+.cars-image {
+    height: 180px;  
+  }
+
+  .glightbox-content {
+    max-width: 700px;
+    gap: 16px;
+    padding: 10px;
+  }
+
+  .glightbox-content-image {
+    max-height: 70vh;
+  }
+
+  .glightbox-content-title {
+    font-size: 24px;
+  }
+
+.footer-main {
+    background-image: url(./images/footer1280.webp);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-menu-list {
+    justify-content: center;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    
+  }
+
+  .header-title-name {
+    font-size: 60px;
+    text-align: center;
+  }
+
+  .header-title-description {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .header-title {
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-title-button {
+    margin: 0 auto;
+  }
+
+  .header {
+    background-image: url(./images/headercar768.webp); 
+  
+  }
+
+  .biography-title {
+    font-size: 28px;
+  }
+
+
+  .biography-image {
+    max-width: 70%;
+  }
+
+
+  .biography-description {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+
+  .results-body-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px 40px;
+  }
+
+  .results-body-title {
+    font-size: 28px;
+  }
+
+  .results-body-description {
+    font-size: 16px;
+  }
+
+  .career-body-title {
+    font-size: 28px;
+  }
+
+  .career-description-title {
+    font-size: 22px;
+  }
+
+  .career-description {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+
+  .career-img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .racingcars-title {
+    font-size: 30px;
+  }
+
+  .racingcars-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .racingcars-item {
+    max-width: 100%;
+  }
+
+  .racingcars-item-title {
+    font-size: 17px;
+  }
+
+  .racingcars-image {
+    height: 160px;
+  }
+
+  .racingcar-description {
+    font-size: 15px;
+  }
+
+  .cars-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .cars-item {
+    max-width: 100%;
+  }
+
+  .cars-image {
+    height: 160px;
+  }
+
+  .cars-item-title {
+    font-size: 17px;
+  }
+
+  .glightbox-content {
+    max-width: 95%;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .glightbox-content-image {
+    border-radius: 10px;
+    max-height: 65vh;
+  }
+
+  .glightbox-content-title {
+    font-size: 20px;
+  }
+
+  .gallery-item {
+    width: 280px;
+    height: 200px;
+  }
+
+  .footer-main {
+    background-image: url(./images/footer768.webp);
+    padding: 60px 15px;
+    gap: 40px;
+  }
+
+  .footer-socials-list {
+    gap: 20px;
+  }
+   
+}
+
+@media (max-width: 550px) {
+
+   .container-wide {
+    padding: 20px 30px;
+  }
+
+  .header-title {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title-name {
+    font-size: 40px;
+  }
+
+  .header-title-description {
+    font-size: 16px;
+  }
+
+  .header-title-button {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .burger {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .header-menu-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: #5D0001;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 32px;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+     
+  }
+
+   .burger-checkbox:checked ~ .header-menu-list {
+    transform: translateY(0);
+  }
+
+  .header-menu-link {
+    font-size: 22px;
+    color: var(--color-light);
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+   .header-menu-list .header-menu-link:hover {
+    color: var(--color-silver);
+  }
+
+   .header-menu-list .header-menu-link:active,
+  .header-menu-list .header-menu-link:focus-visible {
+    color: var(--color-silver);
+  }
+
+/*  
+  .header-menu-item:last-child {
+    grid-column: 2;
+    justify-self: center;
+  } */
+
+  /* .header-menu-link {
+    font-size: 14px;
+    font-weight: 600;
+  } */
+
+  .header {
+    padding-inline: 20px;
+    background-image: url(./images/headercar600.webp);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+  }
+
+
+  .biography {
+    padding: 40px 0;
+  }
+
+  .biography-title {
+    font-size: 24px;
+    
+  }
+
+  .biography-image {
+    max-width: 80%;
+  }
+
+
+  .biography-description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .results {
+    padding: 35px;
+  }
+
+  .results-body-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 20px;
+  }
+
+  .results-body-item:last-child {
+    grid-column: 3;
+  }
+
+  .results-body-title {
+    font-size: 22px;
+  }
+
+  .results-body-description {
+    font-size: 14px;
+  }
+
+  .career-body-title {
+    font-size: 24px;
+  }
+
+  .career-description-title {
+    font-size: 20px;
+  }
+
+  .career-description {
+    font-size: 16px;
+  }
+
+  .career-paragraph:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  
+
+  .racingcars-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-self: center;
+  } 
+
+  .racingcars-item {
+    width: 100%;
+    max-width: 350px;
+    min-width: auto;
+  }
+
+  .racingcars-title {
+    font-size: 28px;
+  }
+
+  .racingcars-title:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+
+  .racingcars-item-title {
+    font-size: 16px;
+  }
+
+  .racingcar-description {
+    font-size: 14px;
+  }
+
+  .cars-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-self: center;
+  }
+
+  .cars-item {
+    width: 100%;
+    max-width: 350px;
+    min-width: auto;
+  }
+
+  .cars-title {
+    font-size: 28px;
+  }
+
+  .cars-title:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .cars-item-title {
+    font-size: 16px;
+  }
+
+  .glightbox-content {
+    padding: 10px;
+  }
+
+  .glightbox-content-image {
+    border-radius: 8px;
+    max-height: 60vh;
+  }
+
+  .glightbox-content-title {
+    font-size: 18px;
+  }
+
+  .gallery-item {
+    width: 220px;
+    height: 160px;
+  }
+
+  .footer-main {
+    background-image: url(./images/footer550.webp);
+    padding: 50px 10px;
+  }
+
+  .footer-socials-link {
+    width: 40px;
+  }
+
+  .footer-title {
+    font-size: 32px;
+  }
+}
+
+
+@media (max-width: 425px) {
+  .glightbox-content-image {
+    max-height: 70vh;
+  }
+}
