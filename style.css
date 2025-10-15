@@ -754,7 +754,7 @@ h2, h3, h4 {
 
 .gallery-item {
   flex: 0 0 auto;
-  width: clamp(200px, 25vw, 300px);
+  width: 30%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 16px;
@@ -1013,7 +1013,7 @@ h2, h3, h4 {
   }
 
   .gallery-item {
-    width: clamp(180px, 35vw, 260px);
+    width: 40%;
   }
 
 .footer-main {
@@ -1159,10 +1159,10 @@ h2, h3, h4 {
     font-size: 20px;
   }
 
-  .gallery-item {
+  /* .gallery-item {
     width: 280px;
     height: 200px;
-  }
+  } */
 
   .footer-main {
     background-image: url(./images/footer768.webp);
@@ -1393,7 +1393,7 @@ h2, h3, h4 {
   }
 
   .gallery-item {
-    width: 80vw; 
+    width: 80%; 
   }
 
   .footer-main {
