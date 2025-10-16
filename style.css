@@ -1433,3 +1433,70 @@ h2, h3, h4 {
 }
 
 
+.gallery {
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 2️⃣ Общий стиль галереи */
+.gallery-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0 20px;
+  justify-content: flex-start;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3️⃣ Картинки — адаптив */
+.gallery-item {
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 16px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: zoom-in;
+}
+
+/* --- десктопы --- */
+@media (min-width: 1025px) {
+  .gallery-item {
+    width: 250px;
+    height: 160px;
+  }
+}
+
+/* --- планшеты --- */
+@media (max-width: 1024px) {
+  .gallery-item {
+    width: 40vw;
+    height: auto;
+  }
+}
+
+/* --- айфоны и мобильные --- */
+@media (max-width: 600px) {
+  .gallery-item {
+    width: 85vw;
+    height: auto;
+  }
+}
+
+/* 4️⃣ Safari специфичная поддержка */
+@supports (-webkit-touch-callout: none) {
+  .gallery-list {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-item {
+    max-width: 90vw !important;
+    height: auto !important;
+  }
+}
