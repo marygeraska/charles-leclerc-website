@@ -1023,7 +1023,8 @@ select:focus option[disabled] {
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
-      color: inherit;
+      color: var(--color-dark);
+      -webkit-text-fill-color: currentColor !important;  text-decoration: none !important; 
       -webkit-tap-highlight-color: transparent; -webkit-appearance: none !important;      -moz-appearance: none;                   
       appearance: none;
 }
@@ -1048,6 +1049,7 @@ select:focus option[disabled] {
     .tab-buttons button.active {
       background-color: var(--color-dark-red);
       color: white;
+      -webkit-text-fill-color: white !important;
     }
 
     .tab-content {
