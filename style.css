@@ -235,7 +235,7 @@ svg * {
   --color-dark: #000000;
   --color-light: #ffffff;
   --color-silver:#c0c0c0;
-  --color-dark-red: #ba0000;
+  --color-dark-red: #b30000;
 
   --font-family-base: 'OpenSans', sans-serif;
   --font-family-accent: 'Oswald', sans-serif;
@@ -259,6 +259,28 @@ svg * {
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
 }
+
+.button {
+  align-self: center;
+  background-color: var(--color-dark-red);
+  color: var(--color-light);
+  border: none;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--color-red);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
 
 .container-wide {
   padding: 36px 70px;
@@ -302,6 +324,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3, h4 {
   color: var(--color-dark-red);
+}
+
+.header-nav-career {
+  background-color: var(--color-dark-red);
+  padding: 30px 50px;
 }
 
 .header {
@@ -521,6 +548,17 @@ h2, h3, h4 {
   margin-bottom: 30px;
 }
 
+.career-preview-body-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
 .career-description-title {
   color: var(--color-dark);
   font-size: 26px;
@@ -553,6 +591,8 @@ h2, h3, h4 {
   height: auto;
   border-radius: 20px;
 }
+
+
 
 .racingcars {
   max-width: 1920px;
@@ -862,26 +902,6 @@ select:focus option[disabled] {
   gap: 10px;
 }
 
-.contact-button {
-  align-self: center;
-  background-color: var(--color-dark-red);
-  color: var(--color-light);
-  border: none;
-  padding: 14px 32px;
-  font-size: 18px;
-  font-weight: 700;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.contact-button:hover {
-  background-color: var(--color-red);
-}
-
-.contact-button:active {
-  transform: scale(0.98);
-}
 
 
 .footer {
@@ -959,6 +979,90 @@ select:focus option[disabled] {
 .footer-copyright a:hover {
   color: var(--color-red);
 }
+
+.header-title-career {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.header-title-career:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+
+.tabs {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .tab-content-description {
+      text-align: justify;
+    }
+
+
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #ddd;
+      background-color: #fafafa;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 1rem;
+      background: none;
+      border: none;
+      border-right: 1px solid #ddd;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .tab-buttons button:last-child {
+      border-right: none;
+    }
+
+    .tab-buttons button.active {
+      background-color: var(--color-dark-red);
+      color: white;
+    }
+
+    .tab-content {
+      padding: 2rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tab-content-img {
+      max-width: 50vw;
+      margin-top: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-content-title:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    
+
 
 @media (min-width: 1800px) {
   .glightbox-content-image {
@@ -1061,6 +1165,10 @@ select:focus option[disabled] {
   font-size: 18px;
 }
 
+.career-preview-body-card {
+  font-size: 18px;
+}
+
 .career-body-title {
   font-size: 32px;
 }
@@ -1077,6 +1185,11 @@ select:focus option[disabled] {
 .career-img {
   max-width: 70%;
   justify-self: center;
+}
+
+.main-back-button {
+  padding: 12px 18px;
+  font-size: 18px;
 }
 
 .racingcars-list {
@@ -1127,6 +1240,31 @@ select:focus option[disabled] {
 
 .footer-main {
     background-image: url(./images/footer1280.webp);
+  }
+
+  .header-title-career {
+    font-size: 32px;
+  }
+
+  .tabs {
+    margin-inline: 50px;
+  }
+
+  .tab-buttons button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .tab-content {
+    padding: 1.5rem;
+  }
+
+  .tab-content-description {
+    font-size: 18px;
+  }
+
+  .tab-content-img {
+    max-width: 70vw;
   }
 }
 
@@ -1190,6 +1328,10 @@ select:focus option[disabled] {
 
   .results-body-description {
     font-size: 16px;
+  }
+
+  .career-preview-body-card {
+    font-size: 17px;
   }
 
   .career-body-title {
@@ -1289,6 +1431,41 @@ select:focus option[disabled] {
   .footer-socials-list {
     gap: 20px;
   }
+
+  .header-title-career {
+    font-size: 28px;
+  }
+
+  .tab-content-title {
+    font-size: 20px;
+  }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .tab-buttons button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .tab-content-card {
+    flex-direction: column;
+  }
+
+  .tab-content-description {
+    font-size: 17px;
+  }
+
+  .tab-content-img {
+    max-width: 70vw;
+  }
+
    
 }
 
@@ -1325,7 +1502,7 @@ select:focus option[disabled] {
   .header-menu-list {
     position: fixed;
     inset: 0;
-    background: #5D0001;
+    background: var(--color-dark-red);
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
@@ -1344,7 +1521,7 @@ select:focus option[disabled] {
   }
 
   .header-menu-link {
-    font-size: 22px;
+    font-size: 20px;
     color: var(--color-light);
     font-weight: 600;
     transition: color 0.3s ease;
@@ -1412,6 +1589,15 @@ select:focus option[disabled] {
     font-size: 14px;
   }
 
+  .career-preview-body-card {
+    font-size: 16px;
+  }
+
+  .career-preview-button {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
   .career-body-title {
     font-size: 24px;
   }
@@ -1427,6 +1613,7 @@ select:focus option[disabled] {
   .career-paragraph:not(:last-child) {
     margin-bottom: 20px;
   }
+
 
 
   .racingcars-list {
@@ -1529,12 +1716,56 @@ select:focus option[disabled] {
   .footer-title {
     font-size: 32px;
   }
+
+  .header-nav-career {
+    padding: 15px 35px;
+  }
+
+  .header-title-career {
+    font-size: 24px;
+  }
+
+  .tabs {
+    margin-inline: 20px;
+  }
+
+
+  .tab-content-title {
+    font-size: 16px;
+  }
+
+  .tab-content-description {
+    font-size: 16px;
+  }
+
+  .tab-content-img {
+    max-width: 60vw;
+  }
+
+  .main-back-button {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
 }
 
 
 @media (max-width: 425px) {
+
+  .header-menu-link {
+    font-size: 18px;
+  }
+
   .glightbox-content-image {
     max-height: 70vh;
+  }
+
+  .tabs {
+    margin-inline: 15px;
+  }
+
+  .header-title-career {
+    font-size: 22px;
   }
 }
 
@@ -1604,4 +1835,17 @@ select:focus option[disabled] {
     max-width: 90vw !important;
     height: auto !important;
   }
+}
+
+
+.tabs-wrapper {
+  max-width: 1000px;
+  margin: 0 auto 3rem; 
+  padding-bottom: 20px;
+}
+
+.career-link-back {
+  margin-top: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
