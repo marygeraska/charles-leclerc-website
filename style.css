@@ -169,16 +169,18 @@ label {
   cursor: pointer;
 }
 
-/**
+/* /**
   Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
  */
-button {
+/* button {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: none;
-}
+} */ 
+
+
 
 /**
   Приводим к единому цвету svg-элементы
@@ -232,6 +234,25 @@ svg * {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a.button {
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-appearance: none !important;      
+  -moz-appearance: none;                   
+  appearance: none;
+}
+
+button:focus {
+  outline: none; 
+}
+button:focus-visible {
+  outline: 3px solid var(--color-dark-red); 
+  outline-offset: 2px;
 }
 
 :root {
@@ -1029,6 +1050,9 @@ select:focus option[disabled] {
     .tab-buttons button:last-child {
       border-right: none;
     }
+    .tab-buttons button:hover {
+      background-color: var(--color-dark-red);
+}
 
     .tab-buttons button.active {
       background-color: var(--color-dark-red);
@@ -1853,3 +1877,5 @@ select:focus option[disabled] {
   text-align: center;
   margin-bottom: 20px;
 }
+
+
