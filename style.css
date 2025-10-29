@@ -1023,7 +1023,19 @@ select:focus option[disabled] {
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
-    }
+      -webkit-tap-highlight-color: transparent; -webkit-appearance: none !important;      -moz-appearance: none;                   
+      appearance: none;
+}
+
+.tab-buttons button:focus {
+  outline: none; 
+}
+
+.tab-buttons button:focus-visible {
+  outline: 3px solid var(--color-dark-red); 
+  outline-offset: 2px;
+}
+
 
     .tab-buttons button:last-child {
       border-right: none;
@@ -1458,21 +1470,7 @@ select:focus option[disabled] {
     scroll-snap-align: start;
     font-size: 0.9rem;
     padding: 0.7rem 1rem;
-  -webkit-tap-highlight-color: transparent; 
-  -webkit-appearance: none !important;      
-  -moz-appearance: none;                   
-  appearance: none;
-}
-
-.tab-buttons button:focus {
-  outline: none; 
-}
-
-tab-buttons button:focus-visible {
-  outline: 3px solid var(--color-dark-red); 
-  outline-offset: 2px;
-}
-
+  }
 
   .tab-content-card {
     flex-direction: column;
