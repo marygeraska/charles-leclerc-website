@@ -1023,6 +1023,7 @@ select:focus option[disabled] {
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
+      color: inherit;
       -webkit-tap-highlight-color: transparent; -webkit-appearance: none !important;      -moz-appearance: none;                   
       appearance: none;
 }
