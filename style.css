@@ -46,8 +46,7 @@ body,
   Убираем внешние отступы вертикали нужным тегам,
   у которых есть атрибут class
  */
-:where(
-  h1,
+:where(h1,
   h2,
   h3,
   h4,
@@ -56,8 +55,7 @@ body,
   p,
   ul,
   ol,
-  dl
-):where([class]) {
+  dl):where([class]) {
   margin-block: 0;
 }
 
@@ -170,7 +168,7 @@ label {
 }
 
 
-  /* Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android) */
+/* Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android) */
 button {
   -webkit-tap-highlight-color: transparent;
 }
@@ -182,10 +180,8 @@ button {
   (за исключением тех, у которых уже указан
   атрибут fill со значением 'none' или начинается с 'url')
  */
-:where([fill]:not(
-  [fill="none"],
-  [fill^="url"]
-)) {
+:where([fill]:not([fill="none"],
+    [fill^="url"])) {
   fill: currentColor;
 }
 
@@ -194,10 +190,8 @@ button {
   (за исключением тех, у которых уже указан
   атрибут stroke со значением 'none')
  */
-:where([stroke]:not(
-  [stroke="none"],
-  [stroke^="url"]
-)) {
+:where([stroke]:not([stroke="none"],
+    [stroke^="url"])) {
   stroke: currentColor;
 }
 
@@ -221,6 +215,7 @@ svg * {
   которые предпочитают их не использовать
  */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -237,7 +232,7 @@ svg * {
   --color-red: #dc0000;
   --color-dark: #000000;
   --color-light: #ffffff;
-  --color-silver:#c0c0c0;
+  --color-silver: #c0c0c0;
   --color-dark-red: #b30000;
 
   --font-family-base: 'OpenSans', sans-serif;
@@ -296,8 +291,8 @@ body {
   line-height: 1.7;
   color: var(--color-dark);
   background-color: #F2F2F2;
-  
-  
+
+
 }
 
 a {
@@ -318,14 +313,21 @@ svg * {
   transition-duration: var(--transition-duration);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: var(--font-family-accent);
-    
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--font-family-accent);
+
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   color: var(--color-dark-red);
 }
 
@@ -338,12 +340,12 @@ h2, h3, h4 {
   min-height: 700px;
   padding-top: 30px;
   color: var(--color-light);
-  
+
   padding-inline: 50px;
   background: url(./images/headercar1920.webp) center/cover no-repeat var(--color-dark-red);
 
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 
 }
 
@@ -401,7 +403,7 @@ h2, h3, h4 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  
+
   padding: 16px 32px;
   font-size: 16px;
   font-weight: 700;
@@ -424,6 +426,7 @@ h2, h3, h4 {
   position: absolute;
   visibility: hidden;
 }
+
 .burger {
   position: relative;
   z-index: 20;
@@ -432,6 +435,7 @@ h2, h3, h4 {
   width: 36px;
   height: 24px;
 }
+
 .burger::before,
 .burger::after {
   content: '';
@@ -443,22 +447,26 @@ h2, h3, h4 {
   border-radius: 4px;
   background: var(--color-light);
 }
+
 .burger::before {
   top: 0;
   box-shadow: 0 11px 0 var(--color-light);
   transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
 }
+
 .burger::after {
   bottom: 0;
   transition: bottom .3s .15s, transform .3s;
 }
-.burger-checkbox:checked + .burger::before {
+
+.burger-checkbox:checked+.burger::before {
   top: 10px;
   transform: rotate(45deg);
-  box-shadow: 0 6px 0 rgba(0,0,0,0);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
   transition: box-shadow .15s, top .3s, transform .3s .15s;
 }
-.burger-checkbox:checked + .burger::after {
+
+.burger-checkbox:checked+.burger::after {
   bottom: 10px;
   transform: rotate(-45deg);
   transition: bottom .3s, transform .3s .15s;
@@ -467,7 +475,7 @@ h2, h3, h4 {
 
 .biography {
   margin-top: 20px;
-  padding: 60px 0; 
+  padding: 60px 0;
 }
 
 .biography-container {
@@ -496,10 +504,10 @@ h2, h3, h4 {
 }
 
 .biography-image {
-  width: 100%; 
+  width: 100%;
   border-radius: 16px;
-  object-fit: cover; 
-  
+  object-fit: cover;
+
 }
 
 
@@ -507,7 +515,7 @@ h2, h3, h4 {
   line-height: 1.6;
   font-size: 20px;
   text-align: justify;
-  
+
 }
 
 .biography-text p:not(:last-child) {
@@ -601,7 +609,7 @@ h2, h3, h4 {
   max-width: 1920px;
   margin-inline: auto;
   padding: 40px 20px;
-  
+
 }
 
 .racingcars-title {
@@ -631,7 +639,7 @@ h2, h3, h4 {
   border-radius: 16px;
   padding: 16px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
 }
 
 .racingcars-item a {
@@ -640,7 +648,7 @@ h2, h3, h4 {
 
 .racingcars-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .racingcars-image {
@@ -668,7 +676,7 @@ h2, h3, h4 {
   max-width: 1920px;
   margin-inline: auto;
   padding: 40px 20px;
-  
+
 }
 
 .cars-list {
@@ -697,8 +705,8 @@ h2, h3, h4 {
 
 .cars-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
 }
 
 .cars-title {
@@ -788,7 +796,7 @@ h2, h3, h4 {
 }
 
 .gallery-list::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .gallery-item {
@@ -861,7 +869,9 @@ label {
   margin-bottom: 5px;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   padding: 12px 16px;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -869,13 +879,16 @@ input, textarea, select {
   transition: border-color 0.3s;
 }
 
-input:focus, textarea:focus, select:focus, button:focus {
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
   border-color: var(--color-dark-red);
   outline: none;
 }
 
 select {
- -webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: #fff;
@@ -975,7 +988,7 @@ select:focus option[disabled] {
 .footer-copyright {
   font-size: clamp(12px, 2vw, 14px);
   line-height: 1.5;
-  color: var(--color-light) ;
+  color: var(--color-light);
 }
 
 
@@ -994,118 +1007,177 @@ select:focus option[disabled] {
 
 
 .tabs {
-      max-width: 1000px;
-      margin: 2rem auto;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .tab-content-description {
-      text-align: justify;
-    }
+.tab-content-description {
+  text-align: justify;
+}
 
 
-    .tab-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      border-bottom: 2px solid #ddd;
-      background-color: #fafafa;
-    }
+.tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #ddd;
+  background-color: #fafafa;
+}
 
-    .tab-buttons button {
-      flex: 1;
-      padding: 1rem;
-      background: none;
-      border: none;
-      border-right: 1px solid #ddd;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      color: var(--color-dark);
-      -webkit-text-fill-color: currentColor !important;  text-decoration: none !important; 
-      -webkit-tap-highlight-color: transparent; -webkit-appearance: none !important;      -moz-appearance: none;                   
-      appearance: none;
+.tab-buttons button {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  border-right: 1px solid #ddd;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  color: var(--color-dark);
+  -webkit-text-fill-color: currentColor !important;
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none !important;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .tab-buttons button:focus {
-  outline: none; 
+  outline: none;
 }
 
 .tab-buttons button:focus-visible {
-  outline: 3px solid var(--color-dark-red); 
+  outline: 3px solid var(--color-dark-red);
   outline-offset: 2px;
 }
 
 
-    .tab-buttons button:last-child {
-      border-right: none;
-    }
-    .tab-buttons button:hover {
-      background-color: var(--color-dark-red);
+.tab-buttons button:last-child {
+  border-right: none;
 }
 
-    .tab-buttons button.active {
-      background-color: var(--color-dark-red);
-      color: white;
-      -webkit-text-fill-color: white !important;
-    }
+.tab-buttons button:hover {
+  background-color: var(--color-dark-red);
+}
 
-    .tab-content {
-      padding: 2rem;
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
+.tab-buttons button.active {
+  background-color: var(--color-dark-red);
+  color: white;
+  -webkit-text-fill-color: white !important;
+}
 
-    .tab-content-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.tab-content {
+  padding: 2rem;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
 
-    .tab-content-img {
-      max-width: 50vw;
-      margin-top: 20px;
-    }
+.tab-content-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .tab-video {
-      max-width: 50vw;
-      
-    }
+.tab-content-img {
+  max-width: 50vw;
+  margin-top: 20px;
+}
 
-    .tab-content-video {
-      margin-block: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      background: #000;
-      object-fit: cover;
-    }
+.tab-video {
+  max-width: 50vw;
 
-    .tab-video-title {
-      text-align: center;
-    }
+}
 
-    .tab-content.active {
-      display: block;
-    }
+.tab-content-video {
+  margin-block: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: #000;
+  object-fit: cover;
+}
+
+.tab-video-title {
+  text-align: center;
+}
+
+.tab-content.active {
+  display: block;
+}
 
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
 
-    .tab-content-title:not(:last-child) {
-      margin-bottom: 20px;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .video-wrapper iframe {
-      max-width: 50vw;
-    }
+.tab-content-title:not(:last-child) {
+  margin-bottom: 20px;
+}
 
-    
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 50vw;
+  margin-block: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
 
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 2;
+}
+
+.video-fallback {
+  position: absolute;
+  inset: 0;
+  background: #000 url('./images/gallery6.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 3;
+}
+
+.video-fallback-link {
+  display: inline-block;
+  color: var(--color-dark-red);
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: var(--color-light);
+  border-radius: 15px;
+  padding: 12px 20px;
+  font-style: var(--font-family-accent);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.video-fallback-link:hover {
+  background-color: var(--color-dark-red);
+  transform: scale(1.05);
+}
+
+.tab-video-title {
+  text-align: center;
+  margin-top: 12px;
+}
 
 @media (min-width: 1800px) {
   .glightbox-content-image {
@@ -1114,12 +1186,18 @@ select:focus option[disabled] {
 
   .tab-content-img {
     max-width: 30vw;
-    }
+  }
 
   .tab-video {
     max-width: 30vw;
-      
-    }
+
+  }
+
+   .video-wrapper {
+    max-width: 30vw;
+  }
+
+
 }
 
 @media (min-width: 2200px) {
@@ -1156,120 +1234,120 @@ select:focus option[disabled] {
 
 @media (max-width: 1024px) {
 
-.header-menu-link {
-  font-size: 14px;
-}
+  .header-menu-link {
+    font-size: 14px;
+  }
 
-.header-title-name {
-  font-size: 80px;
-}
+  .header-title-name {
+    font-size: 80px;
+  }
 
-.header-title-description {
-  font-size: 24px;
-}
+  .header-title-description {
+    font-size: 24px;
+  }
 
-.header-menu-list {
-  column-gap: 30px;
-}
+  .header-menu-list {
+    column-gap: 30px;
+  }
 
-.header {
+  .header {
     background: url(./images/headercar1280.webp) center/cover no-repeat (--color-dark-red);
-}
+  }
 
-.biography-container {
-  padding: 36px 70px;
-}
+  .biography-container {
+    padding: 36px 70px;
+  }
 
-.biography-title {
-  font-size: 32px;
-  text-align: center;
-}
-
-
-.biography-paragraph {
-  grid-template-columns: 1fr;
-}
-
-.biography-image {
-  max-width: 50%;
-  justify-self: center;
-  display: block; 
-}
-
-.biography-image:not(:last-child) {
-  margin-bottom: 20px;
-}
+  .biography-title {
+    font-size: 32px;
+    text-align: center;
+  }
 
 
-.biography-description {
-  font-size: 18px;
-}
+  .biography-paragraph {
+    grid-template-columns: 1fr;
+  }
 
-.results-body-list {
-  gap: 20px;
-}
+  .biography-image {
+    max-width: 50%;
+    justify-self: center;
+    display: block;
+  }
 
-.results-body-title {
-  font-size: 32px;
-}
+  .biography-image:not(:last-child) {
+    margin-bottom: 20px;
+  }
 
-.results-body-description {
-  font-size: 18px;
-}
 
-.career-preview-body-card {
-  font-size: 18px;
-}
+  .biography-description {
+    font-size: 18px;
+  }
 
-.career-body-title {
-  font-size: 32px;
-}
+  .results-body-list {
+    gap: 20px;
+  }
 
-.career-description {
-  font-size: 18px;
-}
+  .results-body-title {
+    font-size: 32px;
+  }
 
-.career-paragraph {
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
+  .results-body-description {
+    font-size: 18px;
+  }
 
-.career-img {
-  max-width: 70%;
-  justify-self: center;
-}
+  .career-preview-body-card {
+    font-size: 18px;
+  }
 
-.main-back-button {
-  padding: 12px 18px;
-  font-size: 18px;
-}
+  .career-body-title {
+    font-size: 32px;
+  }
 
-.racingcars-list {
+  .career-description {
+    font-size: 18px;
+  }
+
+  .career-paragraph {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .career-img {
+    max-width: 70%;
+    justify-self: center;
+  }
+
+  .main-back-button {
+    padding: 12px 18px;
+    font-size: 18px;
+  }
+
+  .racingcars-list {
     gap: 25px;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
-.racingcars-image {
+  .racingcars-image {
     height: 180px;
   }
 
 
-.racingcars-title {
-  font-size: 32px;
-}
+  .racingcars-title {
+    font-size: 32px;
+  }
 
 
-.cars-list {
-  gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
+  .cars-list {
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 
-.cars-title {
-  font-size: 32px;
-}
+  .cars-title {
+    font-size: 32px;
+  }
 
-.cars-image {
-    height: 180px;  
+  .cars-image {
+    height: 180px;
   }
 
   .glightbox-content {
@@ -1290,7 +1368,7 @@ select:focus option[disabled] {
     width: 45vw;
   }
 
-.footer-main {
+  .footer-main {
     background-image: url(./images/footer1280.webp);
   }
 
@@ -1325,7 +1403,7 @@ select:focus option[disabled] {
     justify-content: center;
     column-gap: 20px;
     flex-wrap: wrap;
-    
+
   }
 
   .header-title-name {
@@ -1348,8 +1426,8 @@ select:focus option[disabled] {
   }
 
   .header {
-    background-image: url(./images/headercar768.webp); 
-  
+    background-image: url(./images/headercar768.webp);
+
   }
 
   .biography-title {
@@ -1518,12 +1596,28 @@ select:focus option[disabled] {
     max-width: 70vw;
   }
 
-   
+
+  .tab-video {
+    max-width: 70vw;
+  }
+
+  .tab-video-title {
+    font-size: 16px;
+  }
+
+  .video-fallback-link {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .video-wrapper {
+    max-width: 70vw;
+  }
 }
 
 @media (max-width: 550px) {
 
-   .container-wide {
+  .container-wide {
     padding: 20px 30px;
   }
 
@@ -1565,10 +1659,10 @@ select:focus option[disabled] {
     transition: transform 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
-     
+
   }
 
-   .burger-checkbox:checked ~ .header-menu-list {
+  .burger-checkbox:checked~.header-menu-list {
     transform: translateY(0);
   }
 
@@ -1579,11 +1673,11 @@ select:focus option[disabled] {
     transition: color 0.3s ease;
   }
 
-   .header-menu-list .header-menu-link:hover {
+  .header-menu-list .header-menu-link:hover {
     color: var(--color-silver);
   }
 
-   .header-menu-list .header-menu-link:active,
+  .header-menu-list .header-menu-link:active,
   .header-menu-list .header-menu-link:focus-visible {
     color: var(--color-silver);
   }
@@ -1605,7 +1699,7 @@ select:focus option[disabled] {
 
   .biography-title {
     font-size: 24px;
-    
+
   }
 
   .biography-image {
@@ -1672,7 +1766,7 @@ select:focus option[disabled] {
     grid-template-columns: 1fr;
     gap: 16px;
     justify-self: center;
-  } 
+  }
 
   .racingcars-item {
     width: 100%;
@@ -1735,7 +1829,7 @@ select:focus option[disabled] {
   }
 
   .gallery-item {
-    width: 90vw; 
+    width: 90vw;
   }
 
   .contact {
@@ -1746,7 +1840,9 @@ select:focus option[disabled] {
     font-size: 24px;
   }
 
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 14px;
     padding: 10px 14px;
   }
@@ -1794,9 +1890,21 @@ select:focus option[disabled] {
     max-width: 60vw;
   }
 
+  .tab-video-title {
+    font-size: 14px;
+  }
+
+
   .main-back-button {
     padding: 12px 16px;
     font-size: 16px;
+  }
+
+
+  .video-fallback-link {
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: normal;
   }
 
 }
@@ -1819,6 +1927,15 @@ select:focus option[disabled] {
   .header-title-career {
     font-size: 22px;
   }
+
+
+  .video-fallback-link {
+    font-size: 10px;
+    padding: 6px 10px;
+    white-space: normal;
+  }
+
+
 }
 
 
@@ -1892,7 +2009,7 @@ select:focus option[disabled] {
 
 .tabs-wrapper {
   max-width: 1000px;
-  margin: 0 auto 3rem; 
+  margin: 0 auto 3rem;
   padding-bottom: 20px;
 }
 
@@ -1901,4 +2018,3 @@ select:focus option[disabled] {
   text-align: center;
   margin-bottom: 20px;
 }
-
