@@ -1069,9 +1069,27 @@ select:focus option[disabled] {
       margin-top: 20px;
     }
 
+    .tab-video {
+      max-width: 50vw;
+      
+    }
+
+    .tab-content-video {
+      margin-block: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      background: #000;
+      object-fit: cover;
+    }
+
+    .tab-video-title {
+      text-align: center;
+    }
+
     .tab-content.active {
       display: block;
     }
+
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(5px); }
@@ -1082,6 +1100,10 @@ select:focus option[disabled] {
       margin-bottom: 20px;
     }
 
+    .video-wrapper iframe {
+      max-width: 50vw;
+    }
+
     
 
 
@@ -1089,6 +1111,15 @@ select:focus option[disabled] {
   .glightbox-content-image {
     max-height: 20vh;
   }
+
+  .tab-content-img {
+    max-width: 30vw;
+    }
+
+  .tab-video {
+    max-width: 30vw;
+      
+    }
 }
 
 @media (min-width: 2200px) {
