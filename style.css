@@ -1153,7 +1153,7 @@ select:focus option[disabled] {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  z-index: 3;
+  z-index: 1;
 }
 
 .video-fallback-link {
