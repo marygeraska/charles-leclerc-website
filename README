@@ -5,14 +5,12 @@ Built with focus on UI design, visual storytelling and structured navigation.
 
 🔗 **Live Demo:** https://marygeraska.github.io/charles-leclerc-website/
 
----
 
 ## Preview
 
 ![Full Page](./screenshots/fullpage.png)
 ![Career Page](./screenshots/career.png)
 
----
 
 ## Features
 
@@ -26,10 +24,9 @@ Built with focus on UI design, visual storytelling and structured navigation.
 
 ## Tech Stack
 
-* React
-* Vite
-* CSS / Tailwind
-* (Framer Motion — если используешь)
+* HTML
+* JavaScript
+* CSS 
 
 
 ## What I focused on
