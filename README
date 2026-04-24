@@ -1,0 +1,78 @@
+# 🏁 Charles Leclerc — Formula 1 Website
+
+Modern multi-page website dedicated to Charles Leclerc.
+Built with focus on UI design, visual storytelling and structured navigation.
+
+🔗 **Live Demo:** https://marygeraska.github.io/charles-leclerc-website/
+
+---
+
+## Preview
+
+![Full Page](./screenshots/fullpage.png)
+![Career Page](./screenshots/career.png)
+
+---
+
+## Features
+
+* Multi-page structure (navigation between sections)
+* Visual storytelling layout
+* Responsive design
+* Clean UI with focus on typography
+* Image-based content presentation
+* Interactive elements and hover effects
+
+
+## Tech Stack
+
+* React
+* Vite
+* CSS / Tailwind
+* (Framer Motion — если используешь)
+
+
+## What I focused on
+
+* Page structure and navigation
+* Content hierarchy
+* UI consistency across pages
+* Visual balance
+* User experience during navigation
+
+
+## Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/marygeraska/charles-leclerc-website.git
+   ```
+
+2. **Go to the project folder:**
+    ```bash
+    cd charles-leclerc-website
+    ```
+
+3. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+4. **Run the project:**
+    ```bash
+    npm run dev
+    ```
+
+## 🇷🇺 Краткое описание
+
+Многостраничный сайт, посвящённый гонщику Формулы-1 Шарлю Леклеру.
+
+Основные особенности:
+
+* навигация между страницами
+* структурированная подача контента
+* адаптивный интерфейс
+* работа с типографикой и визуальной иерархией
+
+Проект демонстрирует навыки создания многостраничных интерфейсов и UI-дизайна.
+
